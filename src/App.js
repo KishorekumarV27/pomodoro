@@ -2,10 +2,9 @@ import './index.css';
 import { useState, useRef } from "react";
 
 function App() {
-  const [timeLeft, setTimeLeft] = useState(1500); // Initial time in seconds (25 minutes)
+  const [timeLeft, setTimeLeft] = useState(1500); //25 minutes in secs
   const intervalRef = useRef(null);
 
-  // Start the timer
   function startTimer() {
     intervalRef.current = setInterval(() => {
       setTimeLeft((prevTimeLeft) => {
@@ -19,13 +18,12 @@ function App() {
     }, 1000);
   }
 
-  // Stop the timer
   function stopTimer() {
     clearInterval(intervalRef.current);
     intervalRef.current = null;
   }
 
-  // Format time (in seconds) to MM:SS
+  // Format time to MM:SS
   function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -37,15 +35,12 @@ function App() {
       <h1>Pomodoro Timer</h1>
 
       <div className="timer-display">
-        {/* Display time formatted as MM:SS */}
         <span>{formatTime(timeLeft)}</span>
       </div>
 
       <div className="buttons">
-        {/* Start button */}
         <button class="start" onClick={startTimer}>START</button>
 
-        {/* Stop button */}
         <button class="stop" onClick={stopTimer}>STOP</button>
       </div>
     </div>
